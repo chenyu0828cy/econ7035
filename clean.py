@@ -1,6 +1,6 @@
 import pandas as pd
 
-def clean(input1, input2, output):
+def clean(input1, input2):
     # read file
     df1 = pd.read_csv(input1)
     df2 = pd.read_csv(input2)
@@ -27,7 +27,11 @@ if __name__ == '__main__':
     parser.add_argument('output', help='Cleaned data file (CSV)')
     args = parser.parse_args()
 
-    cleaned = clean(args.input1, args.input2, args.output)
+    cleaned = clean(args.input1, args.input2)
     cleaned.to_csv(args.output, index=False)
+
+    # Print output file shape
+    print("Output file shape:", cleaned.shape)
+
 
 
